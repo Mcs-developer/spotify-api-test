@@ -1,0 +1,6 @@
+@import '~@angular/material/theming';
+$spotify-app-primary: mat-palette($mat-grey, 800);
+$spotify-app-accent:  mat-palette($mat-green, 500);
+
+
+$spotify-app-theme: mat-light-theme($spotify-app-primary, $spotify-app-accent);

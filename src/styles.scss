@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import '~@angular/material/theming';
+@import './scss/variables.scss';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@include mat-core();
+
+
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($spotify-app-theme);
