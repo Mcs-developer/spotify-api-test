@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     this.spotifyRedirect = 'https://accounts.spotify.com/authorize?response_type=code' +
         ('&client_id='+environment.clientId) +
         ('&redirect_uri=' + encodeURIComponent(environment.redirectUrl)) +
-        (environment.scopes ? '&scopes=' + encodeURIComponent(environment.scopes) : '');
+        (environment.scopes ? '&scope=' + encodeURIComponent(environment.scopes) : '');
   }
 
   logApp() {
