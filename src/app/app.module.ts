@@ -16,13 +16,15 @@ import { CallbackComponent } from './callback/callback.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CallbackComponent
+    CallbackComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
