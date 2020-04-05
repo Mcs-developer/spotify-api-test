@@ -1,8 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/theming';
 @import './scss/variables.scss';
+html { box-sizing: border-box; }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*,
+*::before,
+*::after { 
+  box-sizing: inherit;
+}
+
 
 @include mat-core();
 
@@ -12,3 +19,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($spotify-app-theme);
+
+.container {
+    margin: 0 4%;
+  
+    @media #{$mq-medium} {
+      margin: 0 8%;
+    }
+  
+    @media #{$mq-large} {
+      margin: 0 12%;
+    }
+  
+    @media #{$mq-xlarge} {
+      margin: 0 18%;
+    }
+ }
