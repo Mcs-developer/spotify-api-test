@@ -20,12 +20,9 @@ export class SpotifyService {
     return this.currentTokenSubject.value;
   }
 
-  getAccessToken(code) {
+  getAccessToken(code, refreshToken = false) {
 
-    let body = new URLSearchParams();
-    body.set('grant_type', 'authorization_code');
-    body.set('code', code);
-    body.set('redirect_uri', environment.redirectUrl);
+    let body = refreshToken ? this.getRefreshTokenBody(code) : this.getTokenBody(code);
     
     const httpOptions = {
       headers: new HttpHeaders({
@@ -39,18 +36,38 @@ export class SpotifyService {
                .post('https://accounts.spotify.com/api/token', body.toString(), httpOptions)
                .pipe(
                  tap(response => {
-                  localStorage.setItem('token', JSON.stringify(response))
-                  this.currentTokenSubject.next(response);
+                   if(refreshToken) {
+                     this.currentTokenValue['access_token'] = response['access_token'];
+                     localStorage.setItem('token', JSON.stringify(this.currentTokenValue))
+                   } else {
+                     localStorage.setItem('token', JSON.stringify(response))
+                     this.currentTokenSubject.next(response);
+                   }
                  })
                );
 
   }
 
+  private getTokenBody(code) {
+    let body = new URLSearchParams();
+    body.set('grant_type', 'authorization_code');
+    body.set('code', code);
+    body.set('redirect_uri', environment.redirectUrl);
+
+    return body;
+  }
+
+  private getRefreshTokenBody(code) {
+    let body = new URLSearchParams();
+    body.set('grant_type', 'refresh_token');
+    body.set('refresh_token', code);
+   
+    return body;
+  }
+
   refreshToken() {
     let currentToken = this.currentTokenSubject.value;
 
-    if(currentToken) {
-      this.getAccessToken(currentToken.refresh_token);
-    }
+    return this.getAccessToken(currentToken.refresh_token, true);
   }
 }
