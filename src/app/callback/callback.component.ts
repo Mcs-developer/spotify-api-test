@@ -18,10 +18,11 @@ export class CallbackComponent implements OnInit {
         .queryParams
         .subscribe(params => {
           this.spotifyService.getAccessToken(params.code)
-                            .subscribe(response => {
-                              localStorage.setItem('token', JSON.stringify(response))
-                            }, err => console.log('redirect to error page')
-                            , () => console.log('redirect to main page'));
+                             .subscribe({
+                               error: () => this.router.navigate(['error']),
+                               complete: () => this.router.navigate(['playlist'])
+                             })
+                          
         });
   }
 
