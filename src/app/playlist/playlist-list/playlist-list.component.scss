@@ -1,0 +1,64 @@
+@import "../../../scss/variables.scss";
+.playlist {
+    &-wrap {
+        padding: 10px 0;
+    }
+    &-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -5px;
+    }
+
+    &-item {
+        position: relative;
+        height: 250px;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.6418942577030813) 75%);
+        margin: 5px;
+        flex: 1 1 100%;
+        cursor: pointer;
+        @media #{$mq-small} {
+            flex: 0 0 45%;
+        }
+        @media #{$mq-large} {
+            flex: 0 0 29%;
+        }
+
+        &__detail {
+            color: white;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        &__name,
+        &__ts {
+            margin: 0;
+        }
+        &__img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        &__delete-btn {
+            float: right;
+            padding: 0;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        &__delete-icon {
+            font-size: 18px;
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+        }
+    }
+}

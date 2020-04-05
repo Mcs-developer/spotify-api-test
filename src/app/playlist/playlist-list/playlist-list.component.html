@@ -1,0 +1,18 @@
+<section class="playlist-wrap">
+    <h1>My PlayList</h1>
+    <ul class="playlist-list">
+        <li *ngFor="let playlistItem of playlist" class="playlist-item" (click)="detailList(playlistItem.id)">
+            <img class="playlist-item__img" [src]="showImage(playlistItem.images)" alt="Playlist Img">
+            <div class="playlist-item__detail">
+                <h2 class="playlist-item__name">{{playlistItem.name}}</h2>
+                <h6 class="playlist-item__ts">{{ playlistItem.public ? 'Public': 'Private' }}</h6>
+                <h6 class="playlist-item__ts">
+                    <span>Total songs: {{ playlistItem.tracks.total }}</span>
+                    <button class="playlist-item__delete-btn" (click)="deletePlaylist(playlistItem.id, $event)" mat-icon-button aria-label="Delete action">
+                        <mat-icon class="playlist-item__delete-icon">delete</mat-icon>
+                    </button>
+                </h6>
+            </div>
+        </li>
+    </ul>
+</section>
