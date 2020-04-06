@@ -3,7 +3,10 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false && userInfo">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>
+      <mat-icon svgIcon="spotify"></mat-icon>
+      <span class="menu-text">Menu</span>
+    </mat-toolbar>
     <section class="user-info" *ngIf="userInfo">
       <div class="user-info__content">
         <img class="user-info__profile" [src]="userInfo.images[0].url" alt="Profile Img">
@@ -19,11 +22,7 @@
         </div>
       </div>
     </section>
-    <!-- <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list> -->
+   
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary" >
@@ -35,7 +34,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>spotify-api-test</span>
+      <span>Spotify API</span>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
