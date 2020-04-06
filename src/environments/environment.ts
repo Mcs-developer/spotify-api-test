@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   clientId: '',
   clientSecret: '',
-  redirectUrl: '',
-  scopes: ''
+  redirectUrl: 'http://localhost:4200/callback',
+  scopes: 'user-read-private user-read-email playlist-read-private playlist-modify-private playlist-modify-public'
 };
 
 /*
