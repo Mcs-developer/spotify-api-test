@@ -1,0 +1,9 @@
+.playlist-detail {
+    &__name {
+        cursor: pointer;
+    }
+    &__description {
+        margin: 0;
+        padding: 0 15px;
+    }
+}

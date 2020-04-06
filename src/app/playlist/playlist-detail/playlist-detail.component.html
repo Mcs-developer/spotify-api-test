@@ -1,0 +1,24 @@
+<section class="playlist-detail">
+    
+    <mat-list *ngIf="playlistDetail">
+        <div mat-subheader class="playlist-detail__name" (click)="goBack()">
+             {{ '<  ' + playlistDetail.name}}
+        </div>
+        <p class="playlist-detail__description mat-small">
+            {{playlistDetail.description}}
+        </p>
+        <div *ngIf="playlistDetail.tracks.items.length > 0; else notracks">
+            <mat-list-item  *ngFor="let trackObj of playlistDetail.tracks.items">
+              <img matListAvatar [src]="trackObj.track.album.images[2].url" alt="album Image">
+              <div mat-line>{{trackObj.track.name}}</div>
+              <div mat-line> {{trackObj.track.artists[0].name + ' - ' + trackObj.track.album.name}} </div>
+            </mat-list-item>
+        </div>
+        <ng-template #notracks>
+            <div style="text-align: center;">
+                No tracks to show you.
+            </div>
+        </ng-template>
+
+      </mat-list>
+</section>
