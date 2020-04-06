@@ -1,0 +1,29 @@
+<form  class="playlist-new" [formGroup]="playlistForm" (ngSubmit)="onSubmit()">
+    <h1 class="playlist-new__title"> Create Playlist </h1>
+    <div>
+        <mat-form-field class="fields" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input class="playlist-new__name" matInput placeholder="Name" formControlName="name">
+        </mat-form-field>
+    </div>
+    <div>
+       <mat-form-field class="fields " appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea class="playlist-new__description" matInput placeholder="Description" formControlName="description" ></textarea>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="fields " appearance="outline">
+            <mat-label>Public</mat-label>
+            <mat-select class="playlist-new__scope" formControlName="public">
+                <mat-option [value]="true">Yes</mat-option>
+                <mat-option [value]="false">No</mat-option>
+              </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="playlist-new__actions">
+        <button mat-button color="accent" (click)="goBack()" >Cancel</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!playlistForm.valid">Create</button>
+    </div>
+</form>
+
