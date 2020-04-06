@@ -1,8 +1,27 @@
 @import "../../../scss/variables.scss";
 .playlist {
-    &-wrap {
-        padding: 10px 0;
+    &__new-btn {
+        position: fixed;
+        z-index: 2;
+        bottom: 28px;
+        right: 25px;
+        @media #{$mq-small} {
+            bottom: 33px;
+            right: 50px;
+        }
+        @media #{$mq-large} {
+            bottom: 55px;
+            right: 273px;
+        }
+       
     }
+    &__title {
+        margin-bottom: 15px;
+    }
+    &-wrap {
+        padding: 15px 0;
+    }
+    
     &-list {
         list-style-type: none;
         margin: 0;
@@ -11,7 +30,7 @@
         flex-wrap: wrap;
         margin-left: -5px;
     }
-
+   
     &-item {
         position: relative;
         height: 250px;
@@ -20,7 +39,7 @@
         flex: 1 1 100%;
         cursor: pointer;
         @media #{$mq-small} {
-            flex: 0 0 45%;
+            flex: 0 0 40%;
         }
         @media #{$mq-large} {
             flex: 0 0 29%;
@@ -56,9 +75,6 @@
         }
         &__delete-icon {
             font-size: 18px;
-            width: 18px;
-            height: 18px;
-            vertical-align: middle;
         }
     }
 }
