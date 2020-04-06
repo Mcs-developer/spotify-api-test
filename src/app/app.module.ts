@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,7 +8,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
 import { LoginComponent } from './login/login.component';
@@ -45,4 +45,12 @@ import { ErrorComponent } from './error/error.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(private matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer){
+    this.matIconRegistry.addSvgIcon(
+      'spotify',
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/spotify.svg")
+    );
+  }
+}
